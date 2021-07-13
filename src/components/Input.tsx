@@ -18,6 +18,14 @@ export const Input = styled('input', {
   color: '$white',
 
   outline: 'none',
+
+  '&::placeholder': {
+    color: '$white',
+  },
+
+  '&:focus': {
+    outline: 'none',
+  },
 })
 
 export const Textarea = styled(ExpandingTextarea, {
@@ -38,4 +46,12 @@ export const Textarea = styled(ExpandingTextarea, {
   outline: 'none',
 
   resize: 'none',
+
+  '&::placeholder': {
+    color: '$white',
+  },
+
+  '&:focus': {
+    outline: 'none',
+  },
 })
