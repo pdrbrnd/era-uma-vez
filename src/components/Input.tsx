@@ -20,7 +20,7 @@ export const Input = styled('input', {
   outline: 'none',
 
   '&::placeholder': {
-    color: '$white',
+    color: '$darkGreen',
   },
 
   '&:focus': {
