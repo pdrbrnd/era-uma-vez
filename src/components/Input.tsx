@@ -48,7 +48,7 @@ export const Textarea = styled(ExpandingTextarea, {
   resize: 'none',
 
   '&::placeholder': {
-    color: '$white',
+    color: '$darkGreen',
   },
 
   '&:focus': {
