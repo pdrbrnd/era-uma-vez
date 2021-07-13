@@ -151,7 +151,7 @@ export const Submission = (): JSX.Element => {
         </>
       )}
       <Textarea
-        placeholder="Continua aqui"
+        placeholder={mode === 'admin' ? 'Começa aqui' : 'Continua aqui'}
         value={content}
         onChange={(e: any) => setContent(e.target.value)}
       />
@@ -163,7 +163,7 @@ export const Submission = (): JSX.Element => {
             handleSubmit()
           }}
         >
-          Submeter
+          {isLastUser ? 'Acabar a história' : 'Submeter'}
         </Button>
       )}
     </Box>
