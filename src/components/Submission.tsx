@@ -20,17 +20,19 @@ export const Submission = (): JSX.Element => {
 
   const [content, setContent] = useState('')
 
-  const { data: users } = useQuery('users', async () => {
-    const res = await fetchGraphql<
-      {
-        users: {
-          id: string
-          parts_aggregate: { aggregate: { count: number } }
-        }[]
-      },
-      { id: string }
-    >({
-      query: `
+  const { data: users } = useQuery(
+    'users',
+    async () => {
+      const res = await fetchGraphql<
+        {
+          users: {
+            id: string
+            parts_aggregate: { aggregate: { count: number } }
+          }[]
+        },
+        { id: string }
+      >({
+        query: `
         query getUsers($id: uuid!) {
           users(where: { id: { _neq: $id } }) {
             id
@@ -42,17 +44,21 @@ export const Submission = (): JSX.Element => {
           }
         }
       `,
-      variables: {
-        id: user?.id as string,
-      },
-    })
+        variables: {
+          id: user?.id as string,
+        },
+      })
 
-    if (!res.data) {
-      throw new Error('No data')
+      if (!res.data) {
+        throw new Error('No data')
+      }
+
+      return res.data
+    },
+    {
+      refetchInterval: 3000,
     }
-
-    return res.data
-  })
+  )
   const nextUser = !users
     ? null
     : users.users.find((user) => user.parts_aggregate.aggregate.count === 0)
